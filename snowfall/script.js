@@ -1,6 +1,8 @@
 const DISPLAY_WIDTH = window.innerWidth;
 const DISPLAY_HEIGHT = window.innerHeight;
 const BASE_COLOR = '#1f2449';
+const SNOW_SPEED = 1/8;
+const SNOW_WIDTH = 2;
 
 const SNOWFLAKE_TEMPLATE = [
     [1, 0, 0, 0, 1, 0, 0, 0, 1],
@@ -72,12 +74,21 @@ function renderSnowflakes(ctx, snowsData) {
     }
 }
 
-function moveSnowfall(snowsData) {
+function moveSnowfall_old(snowsData) {
     for(let i = 0; i < snowsData.length; i++) {
         if (snowsData[i].y === DISPLAY_HEIGHT)
             snowsData[i].y = -10;
         else
             snowsData[i].y += 1;
+    }
+}
+
+function moveSnowfall(snowsData) {
+    for(let i = 0; i < snowsData.length; i++) {
+        if (snowsData[i].y === DISPLAY_HEIGHT)
+            snowsData[i].y = -10;
+        snowsData[i].y += 1;
+        snowsData[i].x += Math.sin(snowsData[i].y*SNOW_SPEED)*SNOW_WIDTH;
     }
 }
 
