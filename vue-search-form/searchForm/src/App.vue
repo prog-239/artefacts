@@ -1,44 +1,138 @@
 <script setup>
-import { onMounted } from 'vue';
-import HelloWorld from './components/HelloWorld.vue'
+import { onMounted, ref, defineModel } from 'vue';
 
-function fetchAllProfiles() {
-  fetch('/api/profiles', { method:'GET' })
+const profilesData = ref({ count: 0, profiles: [] }); // count - number and profiles - array
+
+// function fetchAllProfiles() {
+//   fetch('/api/profiles', { method:'GET' })
+//       .then((response) => response.json())
+//       .then((data) => {
+//           profilesData.value = data;// count - number and profiles - array
+//       });
+// }
+
+// onMounted(() => {
+//   fetchAllProfiles();
+// });
+
+const searchWithButtonModel = defineModel('formButton');
+const inlineSearchModel = defineModel('inlineSearch');
+
+function searchProfiles(search) {
+  fetch('/api/profiles?search=' + search, { method:'GET' })
     .then((response) => response.json())
     .then((data) => {
-        console.log(data);
+      profilesData.value = data;
     });
 }
 
-onMounted(() => {
-  fetchAllProfiles();
-});
+function handleSearchButton() {
+  searchProfiles(searchWithButtonModel.value);
+}
 
+function handleInputSearch() {
+  searchProfiles(inlineSearchModel.value);
+}
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="container">
+    <div class="forms">
+      <form class="searchForm formWithButton" @submit.prevent>
+        <input 
+          class="searchField"
+          type="text" 
+          name="search" 
+          placeholder="Введите" 
+          autocomplete="off"
+          v-model="searchWithButtonModel"
+        >
+        <button @click="handleSearchButton">Найти</button>
+      </form>
+  
+      <form class="searchForm">
+        <input 
+          class="searchField"
+          type="text" 
+          name="search" 
+          placeholder="Введите" 
+          autocomplete="off"
+          v-model="inlineSearchModel"
+          @input="handleInputSearch"
+        >
+      </form>
+      <p>Количество результатов {{ profilesData.count }}</p>
+    </div>
+    
+    <div class="results">
+      <div v-for="profile in profilesData.profiles" class="resultCard">
+        {{ profile.fullname }}
+      </div>
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.container {
+  max-width: 600px;
+  margin: auto;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.forms {
+  position: sticky;
+  backdrop-filter: blur(10px);
+  top: 0;
+  padding: 10px 5px;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.searchForm {
+  background-color: #303133;
+  border-radius: 8px;
+  border: 2px solid #51425f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0px 10px 5px;
+  height: 44px;
+  box-sizing: border-box;
+}
+
+.searchForm button {
+  height: 30px;
+  color: #e0e0e0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+}
+
+.formWithButton {
+  margin-bottom: 40px;
+  padding-right: 5px;
+}
+
+.searchField {
+  flex: 1;
+  border: none;
+  background-color: transparent;
+}
+
+.results {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.resultCard {
+  background-color: #28292b;
+  border-radius: 10px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
 }
 </style>
