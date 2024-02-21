@@ -23,7 +23,7 @@ npm run start
 
 Получение полного всего списка
 
-Запрос: https://localhost:4000/api/profiles
+Запрос: http://localhost:4000/api/profiles
 
 Ответ:
 ```json
@@ -37,7 +37,7 @@ npm run start
 ```js
 // Общий пример с гипотетической setData
 function fetchAllProfiles() {
-    fetch('https://localhost:4000/api/profiles', { method:'GET' })
+    fetch('http://localhost:4000/api/profiles', { method:'GET' })
         .then((response) => response.json())
         .then((data) => {
             setData(data);
@@ -50,7 +50,7 @@ function fetchAllProfiles() {
 const profilesData = ref();
 
 function fetchAllProfiles() {
-    fetch('https://localhost:4000/api/profiles', { method:'GET' })
+    fetch('http://localhost:4000/api/profiles', { method:'GET' })
         .then((response) => response.json())
         .then((data) => {
             profilesData.value = data;
@@ -65,7 +65,7 @@ function fetchAllProfiles() {
 const profilesData = ref();
 
 async function fetchAllProfiles() {
-    const response = await fetch('https://localhost:4000/api/profiles', { method:'GET' });
+    const response = await fetch('http://localhost:4000/api/profiles', { method:'GET' });
     const data = await response.json();
     
     profilesData.value = data;
@@ -96,7 +96,7 @@ async function fetchAllProfiles() {
 ```js
 // Общий пример с гипотетической setData
 function searchProfiles(search) {
-    fetch('https://localhost:4000/api/profiles?search=' + search, { method:'GET' })
+    fetch('http://localhost:4000/api/profiles?search=' + search, { method:'GET' })
         .then((response) => response.json())
         .then((data) => {
             setData(data);
@@ -109,7 +109,7 @@ function searchProfiles(search) {
 const profilesData = ref();
 
 function searchProfiles() {
-    fetch('https://localhost:4000/api/profiles?search=' + search, { method:'GET' })
+    fetch('http://localhost:4000/api/profiles?search=' + search, { method:'GET' })
         .then((response) => response.json())
         .then((data) => {
             profilesData.value = data;
@@ -124,7 +124,7 @@ function searchProfiles() {
 const profilesData = ref();
 
 async function searchProfiles() {
-    const response = await fetch('https://localhost:4000/api/profiles?search=' + search, { method:'GET' });
+    const response = await fetch('http://localhost:4000/api/profiles?search=' + search, { method:'GET' });
     const data = await response.json();
     
     profilesData.value = data;
