@@ -118,7 +118,7 @@ import React from 'react';
 
 
 function ProductCard(props) {
-    // В данном случае мы знаем что props содержит данные 
+    // В данном случае мы знаем, что props содержит данные 
     // name - название продукта
     // description - описание продукта
     // posterUrl - ссылка на изображение продукта
@@ -152,7 +152,7 @@ export default ProductCard;
 // Файл ProductCard.jsx
 
 import React from 'react';
-import './ProductCard.css'; // Испортируем стили в компоненту
+import './ProductCard.css'; // Импортируем стили в компоненту
 
 function ProductCard(props) {
     return (
