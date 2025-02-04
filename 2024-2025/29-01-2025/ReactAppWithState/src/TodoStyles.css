@@ -1,0 +1,82 @@
+input {
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.todoCardsList {
+    padding: 10px 0;
+    margin: 30px 0px;
+}
+
+.todoCard {
+    padding: 20px;
+    box-sizing: border-box;
+    border: 2px solid #5353c358;
+    border-radius: 14px;
+}
+
+.todoCard p {
+   margin: 0; 
+}
+
+.todoControls {
+    margin-top: 20px;
+    border-top: 2px solid #5353c358;
+    padding-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.todoItems {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.todoCreateForm {
+    padding: 20px;
+    box-sizing: border-box;
+    border: 2px solid #5353c358;
+    border-radius: 14px;
+}
+
+.todoCreateControls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.todoContainer {
+    padding: 30px 0px;
+    min-width: 500px;
+}
+
+.topControls {
+    padding: 20px 0px;
+    position: sticky;
+    top: 0px;
+    backdrop-filter: blur(3px);
+    border-bottom: 1px solid #e0e0e075;
+}
+
+.bottomControls {
+    padding: 20px 0px;
+    position: sticky;
+    bottom: 0px;
+    backdrop-filter: blur(3px);
+    border-bottom: 1px solid #e0e0e075;
+    display: flex;
+    justify-content: flex-end;
+}
