@@ -25,6 +25,10 @@ class OldTodoCard extends Component {
 
     }
 
+    componentWillUnmount() {
+
+    }
+
     render() {
         return (
             <div>

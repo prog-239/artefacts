@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { v4 as uuid } from 'uuid';
 
 function TodoCreateForm(props) {
     const [todoContent, setTodoContent] = useState('');
@@ -8,7 +9,7 @@ function TodoCreateForm(props) {
     }
 
     function handleAddTodo() {
-        props.onCreateTodo({ content: todoContent });
+        props.onCreateTodo({ content: todoContent, id: uuid() });
         setTodoContent('');
     }
 

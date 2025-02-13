@@ -12,6 +12,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  width: 100%;
+}
+
+.app {
+  width: 100%;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  max-width: 500px;
+  margin: auto;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -49,4 +61,33 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+    background-color: #5353c3;
+    opacity: 1;
+  }
+
+  50% {
+    transform: rotate(180deg);
+    background-color: #ba53c3;
+    opacity: .7;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    background-color: #5353c3;
+    opacity: 1;
+  }
+}
+
+.prettyLoader {
+  width: 40px;
+  height: 40px;
+  background-color: #5353c3;
+  border-radius: 8px;
+  animation: loading 2s 0s infinite linear;
+  margin: auto;
 }
