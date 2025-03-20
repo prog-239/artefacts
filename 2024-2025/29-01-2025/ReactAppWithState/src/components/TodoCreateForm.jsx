@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
+import { Button, Dialog, Flex, Text, TextField} from '@radix-ui/themes';
 
-function TodoCreateForm(props) {
+export const TodoCreateForm = (props) => {
     const [todoContent, setTodoContent] = useState('');
 
     function handleChangeInput(event) {
@@ -18,22 +19,34 @@ function TodoCreateForm(props) {
     }
 
     return (
-        <div className="todoCreateForm">
-            <form>
-                <div>
-                    <input 
-                        placeholder="Введите название" 
-                        value={todoContent}
-                        onChange={handleChangeInput} 
-                    />
-                </div>
-            </form>
-            <div className="todoCreateControls">
-                <button onClick={handleAddTodo}>Добавить</button>
-                <button onClick={handleCancel}>Отменить</button>
-            </div>
-        </div>
+        <Dialog.Root>
+            <Dialog.Trigger>
+                <Button color="gray" variant="outline">Создать Todo</Button>
+            </Dialog.Trigger>
+
+            <Dialog.Content maxWidth="450px">
+                <Flex direction="column" gap="3">
+                    <label>
+                        <Text as="div" size="2" mb="1" weight="bold">
+                            Название
+                        </Text>
+                        <TextField.Root
+                            placeholder="Введите название"
+                        />
+                    </label>
+                </Flex>
+
+                <Flex gap="3" mt="4" justify="end">
+                    <Dialog.Close>
+                        <Button onClick={handleCancel} variant="soft" color="gray">
+                            Отменить
+                        </Button>
+                    </Dialog.Close>
+                    <Dialog.Close>
+                        <Button color="gray" variant="outline" onClick={handleAddTodo}>Добавить</Button>
+                    </Dialog.Close>
+                </Flex>
+            </Dialog.Content>
+        </Dialog.Root>
     )
 }
-
-export default TodoCreateForm;

@@ -1,6 +1,6 @@
 export const TODOS_STORAGE_KEY = 'todos';
 
-class TodosStorageService {
+export class TodosStorageService {
     static save(data) {
         const strData = JSON.stringify(data);
         localStorage.setItem(TODOS_STORAGE_KEY, strData);
@@ -22,5 +22,3 @@ class TodosStorageService {
         })
     }
 }
-
-export default TodosStorageService;

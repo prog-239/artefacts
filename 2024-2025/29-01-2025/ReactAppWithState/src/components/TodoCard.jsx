@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
+import { Button, Card, Flex } from '@radix-ui/themes';
 
-function TodoCard(props) {
+export const TodoCard = (props) => {
     // componentDidMount
     useEffect(function() {
         console.log('MOUNTED');
@@ -19,17 +20,15 @@ function TodoCard(props) {
     }, [])
 
     return (
-        <div className="todoCard">
+        <Card>
             <p>
                 {props.content}
             </p>
-            <div className="todoControls">
-                <button onClick={props.onRemove}>
+            <Flex justify="end">
+                <Button color="gray" variant="outline" onClick={props.onRemove}>
                     Удалить
-                </button>
-            </div>
-        </div>
+                </Button>
+            </Flex>
+        </Card>
     )
 }
-
-export default TodoCard;

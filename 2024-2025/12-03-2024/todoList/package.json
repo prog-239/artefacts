@@ -1,5 +1,5 @@
 {
-  "name": "reactappwithstate",
+  "name": "todolist",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,10 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@radix-ui/themes": "^3.2.1",
+    "axios": "^1.8.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "uuid": "^11.0.5"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

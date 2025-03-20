@@ -1,8 +1,8 @@
 import React from "react";
-import TodoCard from "./TodoCard";
-import PrettyLoader from "./PrettyLoader";
+import { TodoCard } from "./TodoCard";
+import { PrettyLoader } from "./PrettyLoader";
 
-function TodoCardsList(props) {
+export const TodoCardsList = (props) => {
     function handleRemove() {
         // confirm - это JS-функция, которая в бразуере 
         // вызовет окно подтверждения действия
@@ -30,5 +30,3 @@ function TodoCardsList(props) {
         </div>
     )
 }
-
-export default TodoCardsList;
